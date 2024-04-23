@@ -1,0 +1,19 @@
+services:
+  common-mongodb:
+    image: mongo:6.0
+    deploy:
+      resources: 
+        limits: 
+          memory: 2GB
+#    command: --smallfiles --storageEngine=wiredTiger
+# docker exec -ti vanilla-nuxeo-2023-mongodb_1 sh -c "tail -f /var/log/mongodb/mongodb.log"
+#    command: mongod --smallfiles --storageEngine=wiredTiger --profile=2 --slowms=-1
+    command: mongod --storageEngine=wiredTiger --quiet
+    ports:
+      - "27017:27017"
+    volumes:
+      - vol-mongodb:/data/db
+      - vol-mongodb-configdb:/data/configdb
+    environment:
+      - TZ=US/Pacific
+

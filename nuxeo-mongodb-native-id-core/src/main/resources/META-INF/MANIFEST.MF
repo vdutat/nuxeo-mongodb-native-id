@@ -1,0 +1,9 @@
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Manifest-Version: 1.0
+Bundle-Vendor: com.acme.core.storage
+Bundle-Version: 1.0.0
+Bundle-Name: nuxeo-mongodb-native-id-core
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.acme.core.storage.nuxeo-mongodb-native-id-core;singleton=true
+Nuxeo-Component: OSGI-INF/overridedefaultrepository-contrib.xml

@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  mongodb:
+    extends:
+      file: ./mongodb-2023.yaml
+      service: common-mongodb
+  nuxeo:
+    image: nuxeo-mongodb-native-id:1.0.0
+    #TODO create '.env' file. See sample '.env.sample' and set 'NUXEO_CLID' with a valid CLID
+    env_file: .env
+    ports:
+      - "8080:8080"
+      - "8787:8787"
+    environment:
+      NUXEO_DEV: "true"
+      NUXEO_PACKAGES: nuxeo-web-ui platform-explorer
+    volumes:
+      - ./conf.d:/etc/nuxeo/conf.d
+      - data:/var/lib/nuxeo
+      - lib:/var/lib/nuxeo
+      - log:/var/log/nuxeo
+      - tmp:/tmp
+volumes:
+  data: {}
+  vol-mongodb: {}
+  vol-mongodb-configdb: {}
+  tmp: {}
+  lib: {}
+  log: {}
